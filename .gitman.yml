@@ -1,0 +1,52 @@
+location: .gitman
+sources:
+  - name: octomap
+    type: git
+    repo: https://github.com/ctu-mrs/octomap.git
+    sparse_paths:
+      -
+    rev: master
+    links:
+      - target: ros_packages/octomap
+    scripts:
+      - git submodule update --init --recursive
+  - name: octomap_tools
+    type: git
+    repo: https://github.com/ctu-mrs/octomap_tools.git
+    sparse_paths:
+      -
+    rev: master
+    links:
+      - target: ros_packages/octomap_tools
+    scripts:
+      - git submodule update --init --recursive
+  - name: mrs_octomap_server
+    type: git
+    repo: https://github.com/ctu-mrs/mrs_octomap_server.git
+    sparse_paths:
+      -
+    rev: master
+    links:
+      - target: ros_packages/mrs_octomap_server
+    scripts:
+      - git submodule update --init --recursive
+  - name: mrs_octomap_planner
+    type: git
+    repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
+    sparse_paths:
+      -
+    rev: master
+    links:
+      - target: ros_packages/mrs_octomap_planner
+    scripts:
+      - git submodule update --init --recursive
+  - name: octomap_ros
+    type: git
+    repo: https://github.com/OctoMap/octomap_ros
+    sparse_paths:
+      -
+    rev: melodic-devel
+    links:
+      - target: ros_packages/octomap_ros
+    scripts:
+      - git submodule update --init --recursive
