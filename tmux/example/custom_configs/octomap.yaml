@@ -24,7 +24,7 @@ local_map:
   vertical_distance: 30.0
 
   # the publisher rate of the local map
-  rate: 2.0 # [Hz]
+  rate: 10.0 # [Hz]
 
   max_computation_duty_cycle: 0.20
 
