@@ -26,7 +26,7 @@ local_map:
   # the publisher rate of the local map
   rate: 10.0 # [Hz]
 
-  max_computation_duty_cycle: 0.20
+  max_computation_duty_cycle: 0.33
 
 sensor_params_3d:
 
