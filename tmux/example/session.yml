@@ -19,7 +19,8 @@ windows:
   - spawn:
       layout: tiled
       panes:
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-ouster --ouster-model OS0-128 --use-gpu-ray --pos 0 0 1.0 0"
+        # - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-ouster --ouster-model OS0-128 --use-gpu-ray --pos 0 0 1.0 0 --enable-realsense-down"
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-ouster --use-gpu-ray --pos 0 0 1.0 0 --enable-realsense-down"
   - control:
        layout: tiled
        panes:

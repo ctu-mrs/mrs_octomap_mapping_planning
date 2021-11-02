@@ -52,8 +52,8 @@
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
     <arg name="custom_config" value="$(arg config_octomap)" />
     <arg name="debug" value="false" />
-    <arg name="3d_lidar_topic" value="pcl_filter_mapping/points_processed" />
-    <arg name="2d_lidar_topic" value="rplidar/scan" />
+    <arg name="3d_lidar_topic_0_in" value="pcl_filter_mapping/points_processed" />
+    <arg name="2d_lidar_topic_0_in" value="rplidar/scan" />
     <arg name="world_frame_id" value="$(arg world_frame_id)" />
 
   </include>
