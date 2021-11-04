@@ -5,19 +5,21 @@
   <arg name="LOGGER_DEBUG" default="$(optenv LOGGER_DEBUG false)" />
   <arg name="RUN_TYPE" default="$(env RUN_TYPE)" />
 
-  <!-- other args -->
+    <!-- other args -->
   <arg name="standalone" default="false" />
   <arg name="debug" default="false" />
   <arg name="nodelet_manager_name" default="$(arg UAV_NAME)_mapping_nodelet_manager" />
   <arg name="world_frame_id" default="$(arg UAV_NAME)/gps_origin" />
 
     <!-- custom configs -->
-  <arg name="config_pcl_filter" default="" />
+  <arg name="config_pcl_filter_ouster" default="" />
+  <arg name="config_pcl_filter_rs_front" default="" />
+  <arg name="config_pcl_filter_rs_down" default="" />
   <arg name="config_octomap" default="" />
   <arg name="config_pathfinder" default="" />
   <arg name="config_octomap_visualizer" default="" />
 
-  <!-- NodeletManager //{ -->
+    <!-- NodeletManager //{ -->
 
   <include file="$(find octomap_mapping_planning)/launch/nodelet_manager.launch">
 
@@ -35,10 +37,72 @@
 
     <arg name="standalone" value="$(arg standalone)" />
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
-    <arg name="custom_config" value="$(arg config_pcl_filter)" />
+    <arg name="custom_config" value="$(arg config_pcl_filter_ouster)" />
     <arg name="debug" value="false" />
     <arg name="name_suffix" value="_mapping" />
     <arg name="topic_3d_lidar_in" value="os_cloud_nodelet/points" />
+
+  </include>
+
+  <!-- //} -->
+
+  <!-- Realsense Front filter //{ -->
+
+  <include file="$(find mrs_pcl_tools)/launch/pcl_filter.launch">
+
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
+    <arg name="custom_config" value="$(arg config_pcl_filter_rs_front)" />
+    <arg name="debug" value="false" />
+    <arg name="name_suffix" value="_realsense_front" />
+    <arg name="topic_3d_lidar_in" value="front/rs_d435/points" />
+
+  </include>
+
+  <!-- //} -->
+
+  <!-- Realsense down filter //{ -->
+
+  <include file="$(find mrs_pcl_tools)/launch/pcl_filter.launch">
+
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
+    <arg name="custom_config" value="$(arg config_pcl_filter_rs_down)" />
+    <arg name="debug" value="false" />
+    <arg name="name_suffix" value="_realsense_down" />
+    <arg name="topic_3d_lidar_in" value="down/rs_d435/points" />
+
+  </include>
+
+  <!-- //} -->
+
+  <!-- Realsense FRONT to PC //{ -->
+
+  <include file="$(find octomap_mapping_planning)/launch/depth_to_pc2.launch">
+
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
+    <arg name="name_suffix" value="_rs1" />
+
+    <arg name="camera_info_topic_in" value="front/rs_d435/aligned_depth_to_color/camera_info" />
+    <arg name="image_rect_topic_in" value="front/rs_d435/aligned_depth_to_color/image_raw" />
+    <arg name="pc2_topic_out" value="front/rs_d435/points" />
+
+  </include>
+
+  <!-- //} -->
+
+  <!-- Realsense DOWN to PC //{ -->
+
+  <include file="$(find octomap_mapping_planning)/launch/depth_to_pc2.launch">
+
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
+    <arg name="name_suffix" value="_rs2" />
+
+    <arg name="camera_info_topic_in" value="down/rs_d435/aligned_depth_to_color/camera_info" />
+    <arg name="image_rect_topic_in" value="down/rs_d435/aligned_depth_to_color/image_raw" />
+    <arg name="pc2_topic_out" value="down/rs_d435/points" />
 
   </include>
 
@@ -52,8 +116,10 @@
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
     <arg name="custom_config" value="$(arg config_octomap)" />
     <arg name="debug" value="false" />
-    <arg name="3d_lidar_topic_0_in" value="pcl_filter_mapping/points_processed" />
-    <arg name="2d_lidar_topic_0_in" value="rplidar/scan" />
+    <arg name="lidar_3d_topic_0_in" value="pcl_filter_mapping/points_processed" />
+    <arg name="lidar_2d_topic_0_in" value="rplidar/scan" />
+    <arg name="depth_camera_topic_0_in" value="pcl_filter_realsense_front/points_processed" />
+    <arg name="depth_camera_topic_1_in" value="pcl_filter_realsense_down/points_processed" />
     <arg name="world_frame_id" value="$(arg world_frame_id)" />
 
   </include>
