@@ -83,9 +83,9 @@
 
   <include file="$(find octomap_mapping_planning)/launch/depth_to_pc.launch">
 
-    <arg name="standalone" value="true" />
-    <!-- <arg name="standalone" value="$(arg standalone)" /> -->
-    <!-- <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" /> -->
+    <!-- <arg name="standalone" value="true" /> -->
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
     <arg name="name_suffix" value="_rs1" />
 
     <arg name="camera_info_topic_in" value="front/rs_d435/aligned_depth_to_color/camera_info" />
@@ -100,9 +100,9 @@
 
   <include file="$(find octomap_mapping_planning)/launch/depth_to_pc.launch">
 
-    <arg name="standalone" value="true" />
-    <!-- <arg name="standalone" value="$(arg standalone)" /> -->
-    <!-- <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" /> -->
+    <!-- <arg name="standalone" value="true" /> -->
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
     <arg name="name_suffix" value="_rs2" />
 
     <arg name="camera_info_topic_in" value="down/rs_d435/aligned_depth_to_color/camera_info" />
