@@ -28,14 +28,44 @@ local_map:
 
   max_computation_duty_cycle: 0.33
 
-sensor_params_3d:
+# for point cloud raycasting
+sensor_params:
 
-  enabled: true
-  vertical_fov_angle: deg(90.0)
-  vertical_rays: 64
-  horizontal_rays: 64 # default 2048
+  3d_lidar:
+
+    n_sensors: 1
+
+    sensor_0:
+
+      max_range: 20.0 # [m]
+
+      vertical_fov_angle: deg(90.0)
+      vertical_rays: 64
+      horizontal_rays: 64
+
+  depth_camera:
+
+    n_sensors: 2
+
+    sensor_0:
+
+      max_range: 9.0 # [m]
+
+      horizontal_fov_angle: deg(70.0)
+      vertical_fov_angle: deg(35.0)
+      horizontal_rays: 80
+      vertical_rays: 45
+
+    sensor_1:
+
+      max_range: 9.0 # [m]
+
+      horizontal_fov_angle: deg(70.0)
+      vertical_fov_angle: deg(35.0)
+      horizontal_rays: 80
+      vertical_rays: 45
 
 unknown_rays:
 
-  update_free_space: false
+  update_free_space: true
   ray_distance: 20.0

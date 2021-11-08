@@ -7,7 +7,7 @@
 
   <arg name="camera_info_topic_in" default="~REMAP_ME" />
   <arg name="image_rect_topic_in" default="~REMAP_ME" />
-  <arg name="pc2_topic_out" default="~REMAP_ME" />
+  <arg name="pc_topic_out" default="~REMAP_ME" />
 
   <arg name="nodelet_manager_name" default="" />
   <arg     if="$(eval arg('standalone'))" name="nodelet" value="standalone" />
@@ -17,11 +17,11 @@
 
   <group ns="$(arg UAV_NAME)">
 
-    <node pkg="nodelet" type="nodelet" name="depth_to_pc2$(arg name_suffix)" args="$(arg nodelet) depth_image_proc/point_cloud_xyz $(arg nodelet_manager)">
+    <node pkg="nodelet" type="nodelet" name="depth_to_pc$(arg name_suffix)" args="$(arg nodelet) depth_image_proc/point_cloud_xyz $(arg nodelet_manager)">
 
       <remap from="camera_info" to="$(arg camera_info_topic_in)"/>
       <remap from="image_rect" to="$(arg image_rect_topic_in)"/>
-      <remap from="points" to="$(arg pc2_topic_out)"/>
+      <remap from="points" to="$(arg pc_topic_out)"/>
 
     </node>
 
