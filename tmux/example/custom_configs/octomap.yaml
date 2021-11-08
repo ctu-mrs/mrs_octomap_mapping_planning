@@ -37,5 +37,5 @@ sensor_params_3d:
 
 unknown_rays:
 
-  update_free_space: true
+  update_free_space: false
   ray_distance: 20.0
