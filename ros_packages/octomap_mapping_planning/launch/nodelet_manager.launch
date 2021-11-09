@@ -17,8 +17,9 @@
   <arg unless="$(arg LOGGER_DEBUG)" name="logger_debug_file" value="" />
 
   <env name="ROSCONSOLE_CONFIG_FILE" value="$(arg logger_debug_file)"/>
+  <!-- <env name="LD_PRELOAD" value="/usr/lib/x86_64-linux-gnu/libasan.so.5"/> -->
 
-  <group ns="$(arg UAV_NAME)" if="$(eval arg('standalone') == 0)">
+  <group ns="$(arg UAV_NAME)" if="$(eval not arg('standalone'))">
 
     <!-- Nodelet manager -->
     <node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager_name)" args="manager" output="screen" launch-prefix="$(arg launch_prefix)">

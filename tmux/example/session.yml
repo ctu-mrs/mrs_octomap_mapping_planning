@@ -19,7 +19,9 @@ windows:
   - spawn:
       layout: tiled
       panes:
-        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-ouster --ouster-model OS0-128 --use-gpu-ray --pos 0 0 1.0 0"
+        # - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-ouster --ouster-model OS0-128 --use-gpu-ray --pos 0 0 1.0 0"
+        # - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --use-gpu-ray --enable-realsense-down --enable-realsense-front --pos 0 0 1.0 0 "
+        - waitForSimulation; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-realsense-down --enable-realsense-front --enable-ouster --ouster-model OS0-128 --use-gpu-ray --pos 0 0 1.0 0"
   - control:
        layout: tiled
        panes:
@@ -27,7 +29,7 @@ windows:
   - mapplan:
       layout: tiled
       panes:
-        - waitForOdometry; roslaunch octomap_mapping_planning mapplan.launch config_octomap:=./custom_configs/octomap.yaml config_pcl_filter:=./custom_configs/ouster_filter_mapping.yaml config_pathfinder:=./custom_configs/pathfinder.yaml config_trajectory_generation:=./custom_configs/trajectory_generation.yaml
+        - waitForOdometry; roslaunch octomap_mapping_planning mapplan.launch config_octomap:=./custom_configs/octomap.yaml config_pcl_filter_ouster:=./custom_configs/ouster_filter_mapping.yaml config_pathfinder:=./custom_configs/pathfinder.yaml config_trajectory_generation:=./custom_configs/trajectory_generation.yaml config_pcl_filter_rs_front:=./custom_configs/rs_front_filter.yaml config_pcl_filter_rs_down:=./custom_configs/rs_down_filter.yaml
   - map:
       layout: tiled
       panes:
