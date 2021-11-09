@@ -6,7 +6,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       - source: ''
         target: ros_packages/octomap
@@ -18,7 +17,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       - source: ''
         target: ros_packages/octomap_rviz_plugins
@@ -30,7 +28,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       - source: ''
         target: ros_packages/octomap_msgs
@@ -42,7 +39,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       - source: ''
         target: ros_packages/octomap_tools
@@ -54,7 +50,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       - source: ''
         target: ros_packages/mrs_octomap_server
@@ -66,7 +61,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       - source: ''
         target: ros_packages/mrs_octomap_planner
@@ -78,7 +72,6 @@ sources:
     type: git
     sparse_paths:
       -
-    link:
     links:
       - source: ''
         target: ros_packages/octomap_ros
@@ -91,7 +84,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -102,29 +94,26 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
     name: mrs_octomap_server
-    rev: 3a2a03a00a9631a495c3e10cbe3f335c3faee264
+    rev: 0646a5e29778da25e9800f1cfd11777474fdd303
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
     name: mrs_octomap_planner
-    rev: dc59c9f025f7ef1c85d8c9d19461b06546eea931
+    rev: 439dde071f382073f8c1a53a9dbe8996adf4fc44
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -135,7 +124,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -146,7 +134,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
@@ -157,7 +144,6 @@ sources_locked:
     type: git
     sparse_paths:
       -
-    link:
     links:
       -
     scripts:
