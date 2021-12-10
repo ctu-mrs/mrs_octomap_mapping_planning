@@ -57,7 +57,7 @@
     <arg name="custom_config" value="$(arg config_pcl_filter_rs_front)" />
     <arg name="debug" value="false" />
     <arg name="name_suffix" value="_realsense_front" />
-    <arg name="topic_3d_lidar_in" value="front/rs_d435/points" />
+    <arg name="topic_3d_lidar_in" value="rgbd/points" />
 
   </include>
 
@@ -73,7 +73,7 @@
     <arg name="custom_config" value="$(arg config_pcl_filter_rs_down)" />
     <arg name="debug" value="false" />
     <arg name="name_suffix" value="_realsense_down" />
-    <arg name="topic_3d_lidar_in" value="down/rs_d435/points" />
+    <arg name="topic_3d_lidar_in" value="rgbd_down/points" />
 
   </include>
 
@@ -86,11 +86,11 @@
     <!-- <arg name="standalone" value="true" /> -->
     <arg name="standalone" value="$(arg standalone)" />
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
-    <arg name="name_suffix" value="_rs1" />
+    <arg name="name_suffix" value="_realsense_front" />
 
-    <arg name="camera_info_topic_in" value="front/rs_d435/aligned_depth_to_color/camera_info" />
-    <arg name="image_rect_topic_in" value="front/rs_d435/aligned_depth_to_color/image_raw" />
-    <arg name="pc_topic_out" value="front/rs_d435/points" />
+    <arg name="camera_info_topic_in" value="rgbd/aligned_depth_to_color/camera_info" />
+    <arg name="image_rect_topic_in" value="rgbd/aligned_depth_to_color/image_raw" />
+    <arg name="pc_topic_out" value="rgbd/points" />
 
   </include>
 
@@ -103,11 +103,11 @@
     <!-- <arg name="standalone" value="true" /> -->
     <arg name="standalone" value="$(arg standalone)" />
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
-    <arg name="name_suffix" value="_rs2" />
+    <arg name="name_suffix" value="_realsense_down" />
 
-    <arg name="camera_info_topic_in" value="down/rs_d435/aligned_depth_to_color/camera_info" />
-    <arg name="image_rect_topic_in" value="down/rs_d435/aligned_depth_to_color/image_raw" />
-    <arg name="pc_topic_out" value="down/rs_d435/points" />
+    <arg name="camera_info_topic_in" value="rgbd_down/aligned_depth_to_color/camera_info" />
+    <arg name="image_rect_topic_in" value="rgbd_down/aligned_depth_to_color/image_raw" />
+    <arg name="pc_topic_out" value="rgbd_down/points" />
 
   </include>
 
@@ -121,12 +121,9 @@
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
     <arg name="custom_config" value="$(arg config_octomap)" />
     <arg name="debug" value="false" />
-    <arg name="lidar_3d_topic_0_in" value="pcl_filter_mapping/points_processed" />
-    <arg name="depth_camera_topic_0_in" value="pcl_filter_realsense_front/points_processed" />
-    <arg name="depth_camera_topic_1_in" value="pcl_filter_realsense_down/points_processed" />
-    <!-- <arg name="lidar_3d_topic_0_in" value="os_cloud_nodelet/points" /> -->
-    <!-- <arg name="depth_camera_topic_0_in" value="front/rs_d435/points" /> -->
-    <!-- <arg name="depth_camera_topic_1_in" value="down/rs_d435/points" /> -->
+    <arg name="lidar_3d_topic_0_in" value="os_cloud_nodelet/points_processed" />
+    <arg name="depth_camera_topic_0_in" value="rgbd/points_processed" />
+    <arg name="depth_camera_topic_1_in" value="rgbd_down/points_processed" />
     <arg name="lidar_2d_topic_0_in" value="rplidar/scan" />
     <arg name="world_frame_id" value="$(arg world_frame_id)" />
 
