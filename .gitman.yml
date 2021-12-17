@@ -110,17 +110,18 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
     name: mrs_octomap_planner
-    rev: 439dde071f382073f8c1a53a9dbe8996adf4fc44
+    rev: fd0a7e9c81dc76768527696edb5dbacfeb035be1
     type: git
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/mrs_octomap_planner
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/OctoMap/octomap_ros
     name: octomap_ros
-    rev: ed2ee3ae2b513a25fed68fa55a635b4df9bbed91
+    rev: fb462a9e542dad60b6287b5e610c24b998bb65aa
     type: git
     sparse_paths:
       -
