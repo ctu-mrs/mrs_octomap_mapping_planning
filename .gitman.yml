@@ -85,7 +85,8 @@ sources_locked:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/octomap
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/octomap_tools.git
@@ -95,7 +96,8 @@ sources_locked:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/octomap_tools
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
@@ -105,7 +107,8 @@ sources_locked:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/mrs_octomap_server
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
@@ -126,7 +129,8 @@ sources_locked:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/octomap_ros
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/OctoMap/octomap_rviz_plugins
@@ -136,7 +140,8 @@ sources_locked:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/octomap_rviz_plugins
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/OctoMap/octomap_msgs
@@ -146,7 +151,8 @@ sources_locked:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/octomap_msgs
     scripts:
       - git submodule update --init --recursive
 default_group: ''
