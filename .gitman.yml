@@ -46,7 +46,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
     name: mrs_octomap_server
-    rev: master
+    rev: transformer
     type: git
     sparse_paths:
       -
@@ -57,7 +57,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
     name: mrs_octomap_planner
-    rev: master
+    rev: transformer
     type: git
     sparse_paths:
       -
@@ -100,7 +100,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
     name: mrs_octomap_server
-    rev: 0646a5e29778da25e9800f1cfd11777474fdd303
+    rev: d53e39db8c5367700ced3ca47c2375683f7fc705
     type: git
     sparse_paths:
       -
@@ -110,7 +110,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
     name: mrs_octomap_planner
-    rev: fd0a7e9c81dc76768527696edb5dbacfeb035be1
+    rev: b811e8eae9805c51d3b51bbb9d1dc19ba09193e2
     type: git
     sparse_paths:
       -
