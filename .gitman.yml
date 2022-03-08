@@ -131,7 +131,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/OctoMap/octomap_rviz_plugins
     name: octomap_rviz_plugins
-    rev: 948d0f83c273b3fa03724a1b6eb096198edfecc6
+    rev: 622ccfac4efa06ce1d5e6e943108e85eccc35bce
     type: git
     sparse_paths:
       -

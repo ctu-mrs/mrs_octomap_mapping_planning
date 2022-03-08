@@ -40,7 +40,7 @@
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
     <arg name="custom_config" value="$(arg config_pcl_filter_ouster)" />
     <arg name="debug" value="false" />
-    <arg name="name_suffix" value="_ouster" />
+    <arg name="name_suffix" value="ouster" />
     <arg name="topic_3d_lidar_in" value="os_cloud_nodelet/points" />
 
   </include>
@@ -90,7 +90,7 @@
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
     <arg name="custom_config" value="$(arg config_pcl_filter_rs_front)" />
     <arg name="debug" value="false" />
-    <arg name="name_suffix" value="_realsense_front" />
+    <arg name="name_suffix" value="rs_front" />
     <arg name="topic_3d_lidar_in" value="rgbd/points" />
 
   </include>
@@ -106,7 +106,7 @@
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
     <arg name="custom_config" value="$(arg config_pcl_filter_rs_down)" />
     <arg name="debug" value="false" />
-    <arg name="name_suffix" value="_realsense_down" />
+    <arg name="name_suffix" value="rs_down" />
     <arg name="topic_3d_lidar_in" value="rgbd_down/points" />
 
   </include>
@@ -121,9 +121,9 @@
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
     <arg name="custom_config" value="$(arg config_octomap)" />
     <arg name="debug" value="false" />
-    <arg name="lidar_3d_topic_0_in" value="os_cloud_nodelet/points_processed" />
-    <arg name="depth_camera_topic_0_in" value="rgbd/points_processed" />
-    <arg name="depth_camera_topic_1_in" value="rgbd_down/points_processed" />
+    <arg name="lidar_3d_topic_0_in" value="pcl_filter_ouster/points_processed" />
+    <arg name="depth_camera_topic_0_in" value="pcl_filter_rs_front/points_processed" />
+    <arg name="depth_camera_topic_1_in" value="pcl_filter_rs_down/points_processed" />
     <arg name="lidar_2d_topic_0_in" value="rplidar/scan" />
     <arg name="world_frame_id" value="$(arg world_frame_id)" />
 
