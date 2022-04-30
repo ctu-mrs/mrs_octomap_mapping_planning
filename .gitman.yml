@@ -4,6 +4,7 @@ sources:
     name: octomap
     rev: master
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -15,6 +16,7 @@ sources:
     name: octomap_rviz_plugins
     rev: kinetic-devel
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -26,6 +28,7 @@ sources:
     name: octomap_msgs
     rev: melodic-devel
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -37,6 +40,7 @@ sources:
     name: octomap_tools
     rev: master
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -48,6 +52,7 @@ sources:
     name: mrs_octomap_server
     rev: master
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -59,6 +64,7 @@ sources:
     name: mrs_octomap_planner
     rev: master
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -70,6 +76,7 @@ sources:
     name: octomap_ros
     rev: melodic-devel
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -82,6 +89,7 @@ sources_locked:
     name: octomap
     rev: 4c9fcd313accf3f5b270eb1c17f4e24829dd2a24
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -93,6 +101,7 @@ sources_locked:
     name: octomap_tools
     rev: 45fb2fb2b0c91603f2a43e60a0a5011eac052388
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -102,8 +111,9 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
     name: mrs_octomap_server
-    rev: 759479489f38bdc93a4cd26da255a1cfcda88d52
+    rev: a6823cd473eb97f63afc64d3bfdaabfbe709b4d9
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -115,6 +125,7 @@ sources_locked:
     name: mrs_octomap_planner
     rev: 4ce6b91bdd7e67265536431d159c2fd05d467939
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -126,6 +137,7 @@ sources_locked:
     name: octomap_ros
     rev: fb462a9e542dad60b6287b5e610c24b998bb65aa
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -137,6 +149,7 @@ sources_locked:
     name: octomap_rviz_plugins
     rev: 622ccfac4efa06ce1d5e6e943108e85eccc35bce
     type: git
+    params:
     sparse_paths:
       -
     links:
@@ -148,6 +161,7 @@ sources_locked:
     name: octomap_msgs
     rev: dcaaf62bd071db0fcd806a98a9101a2e470f7f6d
     type: git
+    params:
     sparse_paths:
       -
     links:
