@@ -22,14 +22,14 @@ local_map:
 
   max_computation_duty_cycle: 0.33
 
-  initial_fractor: 3
+  initial_fractor: 2
 
 global_map:
 
   # should create a global map from the local map?
   enabled: true
 
-  initial_fractor: 3
+  initial_fractor: 2
 
 # for point cloud raycasting
 sensor_params:
@@ -52,5 +52,5 @@ sensor_params:
 
 unknown_rays:
 
-  update_free_space: true
+  update_free_space: false
   ray_distance: 20.0

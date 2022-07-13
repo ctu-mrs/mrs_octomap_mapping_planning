@@ -5,10 +5,5 @@ max_time: 0.3 # [s]
 # by subsampling the original path with more waypoints
 check_trajectory_deviation:
   enabled: true
-  max_deviation: 0.20 # [m]
+  max_deviation: 0.10 # [m]
   max_iterations: 6 # [-]
-
-path_straightener:
-  enabled: true
-  max_deviation: 0.20 # [m]
-  max_hdg_deviation: 0.1 # [rad]

@@ -1,0 +1,50 @@
+constraints: [
+  "slow",
+  "medium",
+  "fast",
+]
+
+constraint_management:
+
+  allowed_constraints:
+    ALOAM: ["slow"]
+    ALOAMREP: ["slow"]
+
+  fallback_constraints:
+    ALOAM: "slow"
+    ALOAMREP: "slow"
+
+slow:
+
+  horizontal:
+    speed: 1.0
+    acceleration: 1.0
+    jerk: 20.0
+    snap: 20.0
+
+  vertical:
+
+    ascending:
+      speed: 1.0
+      acceleration: 1.0
+      jerk: 20.0
+      snap: 20.0
+
+    descending:
+      speed: 1.0
+      acceleration: 1.0
+      jerk: 20.0
+      snap: 20.0
+
+  heading:
+    speed: 1.0
+    acceleration: 1.0
+    jerk: 20.0
+    snap: 20.0
+
+  angular_speed:
+    roll: 60.0
+    pitch: 60.0
+    yaw: 10.0
+
+  tilt: deg(60)

@@ -27,7 +27,7 @@ SESSION_NAME=mav
 
 # following commands will be executed first in each window
 # * do NOT put ; at the end
-pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME; export ODOMETRY_TYPE='aloam'"
+pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME; export ODOMETRY_TYPE='aloam'; export WORLD_FILE=./custom_config/world.yaml"
 
 # define commands
 # 'name' 'command'
@@ -35,7 +35,7 @@ pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME; export ODOMETRY_TYPE='aloam'"
 # * "new line" after the command    => the command will be called after start
 # * NO "new line" after the command => the command will wait for user's <enter>
 input=(
-  'Rosbag' 'waitForOffboard; rosrun mrs_uav_general record.sh
+  'Rosbag' 'waitForOffboard; ./record.sh
 '
   'Sensors' 'waitForRos; roslaunch mrs_uav_general sensors.launch
 '
@@ -43,7 +43,7 @@ input=(
 '
   'Status' 'waitForRos; roslaunch mrs_uav_status status.launch
 '
-  'Control' 'waitForRos; roslaunch mrs_uav_general core.launch
+  'Control' 'waitForRos; roslaunch mrs_uav_general core.launch config_constraint_manager:=./custom_configs/constraint_manager.yaml config_uav_manager:=./custom_configs/uav_manager.yaml
 '
   'PclALoam' 'waitForRos; waitForOdometry; roslaunch mrs_pcl_tools pcl_filter.launch topic_3d_lidar_in:=/'"$UAV_NAME"'/os_cloud_nodelet/points custom_config:=./custom_configs/ouster_filter_aloam.yaml name_suffix:=aloam
 '

@@ -16,7 +16,7 @@ safety_area:
 
   use_safety_area: false
 
-  frame_name: "local_origin"
+  frame_name: "slam_origin"
 
   # convex polygon CCW
   safety_area: [-20, -20,
@@ -45,5 +45,5 @@ safety_area:
     rows: 1 # each matrix has a single row
     cols: [4, 4] # nums of cols of each matrix
 
-  max_height: 4.0
-  min_height: 0.0
+  max_height: 5.0
+  min_height: -1.0
