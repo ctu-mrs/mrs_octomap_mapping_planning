@@ -19,7 +19,7 @@ MAIN_DIR=~/"bag_files"
 
 # the project name
 # * is used to define folder name in ~/$MAIN_DIR
-PROJECT_NAME=just_flying
+PROJECT_NAME=aloam_octomap_example
 
 # the name of the TMUX session
 # * can be used for attaching as 'tmux a -t <session name>'

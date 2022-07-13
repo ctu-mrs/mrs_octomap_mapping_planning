@@ -2,9 +2,9 @@ lidar3d:
 
   downsampling:
     row_step: 1
-    col_step: 1
+    col_step: 8 # = 1024 / 128
 
   range_clip:
     use: true
     min: 0.7
-    max: 20.0
+    max: 40.0
