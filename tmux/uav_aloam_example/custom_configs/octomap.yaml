@@ -43,8 +43,8 @@ sensor_params:
       max_range: 20.0 # [m]
 
       vertical_fov_angle: deg(90.0)
-      vertical_rays: 128
-      horizontal_rays: 128
+      vertical_rays: 64
+      horizontal_rays: 64
 
   depth_camera:
 

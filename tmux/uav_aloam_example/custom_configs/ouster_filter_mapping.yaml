@@ -1,8 +1,8 @@
 lidar3d:
 
   downsampling:
-    row_step: 1
-    col_step: 8 # = 1024 / 128
+    row_step: 2
+    col_step: 16 # = 1024 / 128
 
   range_clip:
     use: true

@@ -27,7 +27,7 @@ SESSION_NAME=mav
 
 # following commands will be executed first in each window
 # * do NOT put ; at the end
-pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME; export ODOMETRY_TYPE='aloam'; export WORLD_FILE=./custom_config/world.yaml"
+pre_input="mkdir -p $MAIN_DIR/$PROJECT_NAME; export ODOMETRY_TYPE='aloam'; export WORLD_FILE=./custom_configs/world.yaml"
 
 # define commands
 # 'name' 'command'
