@@ -1,6 +1,6 @@
 location: .gitman
 sources:
-  - repo: https://github.com/OctomMap/octomap
+  - repo: https://github.com/OctoMap/octomap
     name: octomap
     rev: master
     type: git
@@ -157,9 +157,9 @@ sources_locked:
         target: ros_packages/octomap_msgs
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/OctomMap/octomap
+  - repo: https://github.com/OctoMap/octomap
     name: octomap
-    rev: 5f359052819cb7640af9d56282ff5c5050471443
+    rev: 4c9fcd313accf3f5b270eb1c17f4e24829dd2a24
     type: git
     params:
     sparse_paths:
