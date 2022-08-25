@@ -1,6 +1,6 @@
 location: .gitman
 sources:
-  - repo: https://github.com/ctu-mrs/octomap.git
+  - repo: https://github.com/OctomMap/octomap
     name: octomap
     rev: master
     type: git
@@ -85,21 +85,9 @@ sources:
     scripts:
       - git submodule update --init --recursive
 sources_locked:
-  - repo: https://github.com/ctu-mrs/octomap.git
-    name: octomap
-    rev: 4c9fcd313accf3f5b270eb1c17f4e24829dd2a24
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/octomap
-    scripts:
-      - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/octomap_tools.git
     name: octomap_tools
-    rev: a902bb5fe1176406c05981c32464e7647f1a4384
+    rev: 2124d9d931597e55c20800ddd3a5f90fbfc6df09
     type: git
     params:
     sparse_paths:
@@ -111,7 +99,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
     name: mrs_octomap_server
-    rev: ef87cddd6e14a32801d022c72e23dee80cd7d0d7
+    rev: d1dd7d847206c02ffd285431ef1ee3b5f959cce7
     type: git
     params:
     sparse_paths:
@@ -123,7 +111,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
     name: mrs_octomap_planner
-    rev: 19217d04b74636d1258d5e09440e99fcf4e71e70
+    rev: aff36b37ea01a0331f1ec8f0e1ea4ae9d294795b
     type: git
     params:
     sparse_paths:
@@ -167,6 +155,18 @@ sources_locked:
     links:
       - source: ''
         target: ros_packages/octomap_msgs
+    scripts:
+      - git submodule update --init --recursive
+  - repo: https://github.com/OctomMap/octomap
+    name: octomap
+    rev: 5f359052819cb7640af9d56282ff5c5050471443
+    type: git
+    params:
+    sparse_paths:
+      -
+    links:
+      - source: ''
+        target: ros_packages/octomap
     scripts:
       - git submodule update --init --recursive
 default_group: ''

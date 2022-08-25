@@ -140,7 +140,7 @@
     <arg name="custom_config" value="$(arg config_octomap_visualizer)" />
     <arg name="debug" value="false" />
     <arg name="node_name" value="octomap_global_vis" />
-    <arg name="octomap_topic" value="octomap_server/octomap_global_binary" />
+    <arg name="octomap_topic" value="octomap_server/octomap_global_full" />
 
   </include>
 
@@ -151,7 +151,7 @@
     <arg name="custom_config" value="$(arg config_octomap_visualizer)" />
     <arg name="debug" value="false" />
     <arg name="node_name" value="octomap_local_vis" />
-    <arg name="octomap_topic" value="octomap_server/octomap_local_binary" />
+    <arg name="octomap_topic" value="octomap_server/octomap_local_full" />
 
   </include>
 
