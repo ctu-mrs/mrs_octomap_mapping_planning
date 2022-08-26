@@ -14,13 +14,12 @@ persistency:
 local_map:
 
   # the bounding box distance of the local map
-  horizontal_distance: 50.0
-  vertical_distance: 30.0
+  size:
+    width: 60
+    height: 60
 
   # the publisher rate of the local map
   rate: 10.0 # [Hz]
-
-  max_computation_duty_cycle: 0.33
 
 global_map:
 
@@ -36,11 +35,11 @@ sensor_params:
 
     sensor_0:
 
-      max_range: 20.0 # [m]
+      max_range: 50.0 # [m]
 
       vertical_fov_angle: deg(90.0)
-      vertical_rays: 64
-      horizontal_rays: 64
+      vertical_rays: 128
+      horizontal_rays: 128
 
   depth_camera:
 
