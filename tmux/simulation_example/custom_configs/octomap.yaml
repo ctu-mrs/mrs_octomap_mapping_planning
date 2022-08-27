@@ -2,7 +2,7 @@ resolution: 0.4
 
 persistency:
 
-  enabled: false
+  enabled: true
 
   map_name: "forest"
 
