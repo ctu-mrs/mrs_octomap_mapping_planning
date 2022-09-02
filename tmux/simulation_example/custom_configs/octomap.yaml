@@ -2,7 +2,7 @@ resolution: 0.4
 
 persistency:
 
-  enabled: true
+  enabled: false
 
   map_name: "forest"
 
@@ -15,8 +15,8 @@ local_map:
 
   # the bounding box distance of the local map
   size:
-    width: 60
-    height: 60
+    width: 30
+    height: 15
 
   # the publisher rate of the local map
   rate: 10.0 # [Hz]
@@ -66,4 +66,4 @@ sensor_params:
 unknown_rays:
 
   update_free_space: true
-  ray_distance: 20.0
+  ray_distance: 10.0
