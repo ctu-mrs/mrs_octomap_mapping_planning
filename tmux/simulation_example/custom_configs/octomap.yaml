@@ -18,13 +18,15 @@ local_map:
     width: 30
     height: 15
 
-  # the publisher rate of the local map
-  rate: 10.0 # [Hz]
-
 global_map:
 
   # should create a global map from the local map?
   enabled: true
+
+unknown_rays:
+
+  update_free_space: true
+  ray_distance: 10.0
 
 # for point cloud raycasting
 sensor_params:
@@ -62,8 +64,3 @@ sensor_params:
       vertical_fov_angle: deg(35.0)
       horizontal_rays: 80
       vertical_rays: 45
-
-unknown_rays:
-
-  update_free_space: true
-  ray_distance: 10.0

@@ -1,4 +1,9 @@
-map_resolution: 0.4 # [m] voxel edge size
+# the planner will integrate local maps into a global map
+global_map:
+  resolution: 0.40 # [m] voxel edge size
+
+distance_transform:
+  submap_distance: 20.0 # [m] from the UAV into all directions
 
 safe_obstacle_distance: 1.4 # [m]
 euclidean_distance_cutoff: 1.4 # [m]
