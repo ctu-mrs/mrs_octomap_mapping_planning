@@ -84,6 +84,18 @@ sources:
         target: ros_packages/octomap_ros
     scripts:
       - git submodule update --init --recursive
+  - repo: https://github.com/ctu-mrs/subt_planning_lib.git
+    name: subt_planning_lib
+    rev: master
+    type: git
+    params:
+    sparse_paths:
+      -
+    links:
+      - source: ''
+        target: ros_packages/subt_planning_lib
+    scripts:
+      - git submodule update --init --recursive
 sources_locked:
   - repo: https://github.com/ctu-mrs/octomap_tools.git
     name: octomap_tools
@@ -167,6 +179,18 @@ sources_locked:
     links:
       - source: ''
         target: ros_packages/octomap
+    scripts:
+      - git submodule update --init --recursive
+  - repo: https://github.com/ctu-mrs/subt_planning_lib.git
+    name: subt_planning_lib
+    rev: master
+    type: git
+    params:
+    sparse_paths:
+      -
+    links:
+      - source: ''
+        target: ros_packages/subt_planning_lib
     scripts:
       - git submodule update --init --recursive
 default_group: ''
