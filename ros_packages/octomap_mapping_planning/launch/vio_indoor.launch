@@ -1,0 +1,98 @@
+<launch>
+
+  <!-- args corresponding to environment variables -->
+  <arg name="UAV_NAME" default="$(env UAV_NAME)" />
+  <arg name="LOGGER_DEBUG" default="$(optenv LOGGER_DEBUG false)" />
+  <arg name="RUN_TYPE" default="$(env RUN_TYPE)" />
+
+    <!-- other args -->
+  <arg name="standalone" default="false" />
+  <arg name="debug" default="false" />
+  <arg name="nodelet_manager_name" default="$(arg UAV_NAME)_mapping_nodelet_manager" />
+  <arg name="world_frame_id" default="$(arg UAV_NAME)/vio_origin" />
+
+    <!-- custom configs -->
+  <arg name="config_pcl_filter_ouster" default="" />
+  <arg name="config_pcl_filter_rs_front" default="" />
+  <arg name="config_pcl_filter_rs_down" default="" />
+  <arg name="config_octomap" default="" />
+  <arg name="config_pathfinder" default="" />
+  <arg name="config_octomap_visualizer" default="" />
+
+  <arg name="depth_camera_topic_0_in" default="~REMAP_ME" />
+  <arg name="depth_camera_topic_1_in" default="~REMAP_ME" />
+
+  <arg name="camera_info_topic_0_in" default="rgbd/depth/camera_info" />
+  <arg name="camera_info_topic_1_in" default="pico_flexx/camera_info" />
+
+    <!-- NodeletManager //{ -->
+
+  <include file="$(find octomap_mapping_planning)/launch/nodelet_manager.launch">
+
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
+
+  </include>
+
+  <!-- //} -->
+
+  <!-- OctomapServer //{ -->
+
+  <include file="$(find mrs_octomap_server)/launch/octomap.launch">
+
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
+    <arg name="custom_config" value="$(arg config_octomap)" />
+    <arg name="debug" value="false" />
+    <arg name="depth_camera_topic_0_in" value="$(arg depth_camera_topic_0_in)" />
+    <arg name="depth_camera_topic_1_in" value="$(arg depth_camera_topic_1_in)" />
+
+    <arg name="camera_info_topic_0_in" default="$(arg camera_info_topic_0_in)" />
+    <arg name="camera_info_topic_1_in" default="$(arg camera_info_topic_1_in)" />
+    <arg name="world_frame_id" value="$(arg world_frame_id)" />
+
+  </include>
+
+  <!-- //} -->
+
+  <!-- OctomapVisualizer //{ -->
+
+  <include file="$(find octomap_tools)/launch/octomap_rviz_visualizer.launch">
+
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
+    <arg name="custom_config" value="$(arg config_octomap_visualizer)" />
+    <arg name="debug" value="false" />
+    <arg name="node_name" value="octomap_global_vis" />
+    <arg name="octomap_topic" value="octomap_server/octomap_global_full" />
+
+  </include>
+
+  <include file="$(find octomap_tools)/launch/octomap_rviz_visualizer.launch">
+
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
+    <arg name="custom_config" value="$(arg config_octomap_visualizer)" />
+    <arg name="debug" value="false" />
+    <arg name="node_name" value="octomap_local_vis" />
+    <arg name="octomap_topic" value="octomap_server/octomap_local_full" />
+
+  </include>
+
+  <!-- //} -->
+
+  <!-- PathPlanning //{ -->
+
+  <include file="$(find pathfinder)/launch/pathfinder.launch">
+
+    <arg name="standalone" value="$(arg standalone)" />
+    <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
+    <arg name="custom_config" value="$(arg config_pathfinder)" />
+    <arg name="debug" value="false" />
+
+  </include>
+
+  <!-- //} -->
+
+</launch>
