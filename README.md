@@ -5,7 +5,7 @@ Metapackage containing MRS Octomap-based 3D mapper and planner.
 ![](./.fig/octomap_server.png)
 
 | Build status | [![Build Status](https://github.com/ctu-mrs/octomap_mapping_planning/workflows/Noetic/badge.svg)](https://github.com/ctu-mrs/octomap_mapping_planning/actions) |
-|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 ## Dependencies
 
@@ -41,4 +41,4 @@ was prepared to launch
 * Octomap RVIZ visualizer,
 * Nodelet manager.
 
-Plase, use provided arguments and custom config files to customize the behaviour of the nodes.
+Please, use provided arguments and custom config files to customize the behaviour of the nodes.
