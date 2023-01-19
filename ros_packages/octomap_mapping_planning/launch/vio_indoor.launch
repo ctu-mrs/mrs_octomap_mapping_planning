@@ -48,8 +48,8 @@
     <arg name="depth_camera_topic_0_in" value="$(arg depth_camera_topic_0_in)" />
     <arg name="depth_camera_topic_1_in" value="$(arg depth_camera_topic_1_in)" />
 
-    <arg name="camera_info_topic_0_in" default="$(arg camera_info_topic_0_in)" />
-    <arg name="camera_info_topic_1_in" default="$(arg camera_info_topic_1_in)" />
+    <!-- <arg name="camera_info_topic_0_in" default="$(arg camera_info_topic_0_in)" /> -->
+    <!-- <arg name="camera_info_topic_1_in" default="$(arg camera_info_topic_1_in)" /> -->
     <arg name="world_frame_id" value="$(arg world_frame_id)" />
 
   </include>
