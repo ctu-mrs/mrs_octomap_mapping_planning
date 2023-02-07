@@ -19,8 +19,8 @@
   <arg name="config_pathfinder" default="" />
   <arg name="config_octomap_visualizer" default="" />
 
-  <arg name="depth_camera_topic_0_in" default="~REMAP_ME" />
-  <arg name="depth_camera_topic_1_in" default="~REMAP_ME" />
+  <arg name="depth_camera_topic_0_in" default="rgbd/points_processed" />
+  <arg name="depth_camera_topic_1_in" default="pico_flexx/points_processed" />
 
   <arg name="camera_info_topic_0_in" default="rgbd/depth/camera_info" />
   <arg name="camera_info_topic_1_in" default="pico_flexx/camera_info" />
@@ -48,8 +48,8 @@
     <arg name="depth_camera_topic_0_in" value="$(arg depth_camera_topic_0_in)" />
     <arg name="depth_camera_topic_1_in" value="$(arg depth_camera_topic_1_in)" />
 
-    <!-- <arg name="camera_info_topic_0_in" default="$(arg camera_info_topic_0_in)" /> -->
-    <!-- <arg name="camera_info_topic_1_in" default="$(arg camera_info_topic_1_in)" /> -->
+    <arg name="camera_info_topic_0_in" default="$(arg camera_info_topic_0_in)" />
+    <arg name="camera_info_topic_1_in" default="$(arg camera_info_topic_1_in)" />
     <arg name="world_frame_id" value="$(arg world_frame_id)" />
 
   </include>
