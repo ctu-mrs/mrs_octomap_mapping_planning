@@ -124,6 +124,8 @@
     <arg name="lidar_3d_topic_0_in" value="pcl_filter_ouster/points_processed" />
     <arg name="depth_camera_topic_0_in" value="pcl_filter_rs_front/points_processed" />
     <arg name="depth_camera_topic_1_in" value="pcl_filter_rs_down/points_processed" />
+    <arg name="camera_info_topic_0_in" default="rgbd/aligned_depth_to_color/camera_info" />
+    <arg name="camera_info_topic_1_in" default="rgbd_down/aligned_depth_to_color/camera_info" />
     <arg name="lidar_2d_topic_0_in" value="rplidar/scan" />
     <arg name="world_frame_id" value="$(arg world_frame_id)" />
 
