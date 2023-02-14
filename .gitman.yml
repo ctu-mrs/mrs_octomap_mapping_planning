@@ -99,7 +99,7 @@ sources:
 sources_locked:
   - repo: https://github.com/ctu-mrs/octomap_tools.git
     name: octomap_tools
-    rev: 2124d9d931597e55c20800ddd3a5f90fbfc6df09
+    rev: de11ffae0733d6006b76e3bb1953f2ea3191d0fa
     type: git
     params:
     sparse_paths:
