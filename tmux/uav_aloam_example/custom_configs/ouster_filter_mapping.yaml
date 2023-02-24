@@ -1,6 +1,7 @@
 lidar3d:
 
   downsampling:
+    dynamic_row_selection: true
     row_step: 2
     col_step: 16 # = 1024 / 128
 

@@ -111,7 +111,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
     name: mrs_octomap_server
-    rev: 318dc30d8fae48d1f40207a103ecd6a2f9ec8368
+    rev: c5d3b4dd1b9153745d1818b18be3144638e6e9cb
     type: git
     params:
     sparse_paths:
