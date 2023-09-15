@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package format="2">
 
-  <name>octomap_mapping_planning</name>
+  <name>mrs_octomap_mapping_planning</name>
   <version>1.0.0</version>
-  <description>Octomap Mapping Planning</description>
+  <description>MRS Octomap Mapping Planning</description>
 
   <author email="tomas.baca@fel.cvut.cz">Tomas Baca</author>
   <maintainer email="tomas.baca@fel.cvut.cz">Tomas Baca</maintainer>
@@ -11,5 +11,10 @@
   <license>BSD 3-Clause</license>
 
   <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>mrs_octomap_server</depend>
+  <depend>mrs_octomap_planner</depend>
+  <depend>mrs_octomap_tools</depend>
+  <depend>mrs_subt_planning_lib</depend>
 
 </package>

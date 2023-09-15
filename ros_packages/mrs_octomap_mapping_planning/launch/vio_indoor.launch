@@ -15,8 +15,8 @@
   <arg name="config_pcl_filter_ouster" default="" />
   <arg name="config_pcl_filter_rs_front" default="" />
   <arg name="config_pcl_filter_rs_down" default="" />
-  <arg name="config_octomap" default="" />
-  <arg name="config_pathfinder" default="" />
+  <arg name="config_octomap_server" default="" />
+  <arg name="config_octomap_planner" default="" />
   <arg name="config_octomap_visualizer" default="" />
 
   <arg name="depth_camera_topic_0_in" default="rgbd/points_processed" />
@@ -30,7 +30,7 @@
 
     <!-- NodeletManager //{ -->
 
-  <include file="$(find octomap_mapping_planning)/launch/nodelet_manager.launch">
+  <include file="$(find mrs_octomap_mapping_planning)/launch/nodelet_manager.launch">
 
     <arg name="standalone" value="$(arg standalone)" />
     <arg name="debug" value="$(arg debug)" />
@@ -63,7 +63,7 @@
 
   <!-- OctomapVisualizer //{ -->
 
-  <include file="$(find octomap_tools)/launch/octomap_rviz_visualizer.launch">
+  <include file="$(find mrs_octomap_tools)/launch/octomap_rviz_visualizer.launch">
 
     <arg name="standalone" value="$(arg standalone)" />
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
@@ -74,7 +74,7 @@
 
   </include>
 
-  <include file="$(find octomap_tools)/launch/octomap_rviz_visualizer.launch">
+  <include file="$(find mrs_octomap_tools)/launch/octomap_rviz_visualizer.launch">
 
     <arg name="standalone" value="$(arg standalone)" />
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
@@ -87,13 +87,13 @@
 
   <!-- //} -->
 
-  <!-- PathPlanning //{ -->
+  <!-- Planner //{ -->
 
-  <include file="$(find pathfinder)/launch/pathfinder.launch">
+  <include file="$(find mrs_octomap_planner)/launch/octomap_planner.launch">
 
     <arg name="standalone" value="$(arg standalone)" />
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
-    <arg name="custom_config" value="$(arg config_pathfinder)" />
+    <arg name="custom_config" value="$(arg config_octomap_planner)" />
     <arg name="debug" value="false" />
 
   </include>

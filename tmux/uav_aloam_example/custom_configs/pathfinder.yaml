@@ -1,5 +1,0 @@
-
-safe_obstacle_distance: 1.0 # [m]
-euclidean_distance_cutoff: 1.0 # [m]
-
-max_altitude: 2.0 # [m]

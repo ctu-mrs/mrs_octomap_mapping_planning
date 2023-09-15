@@ -1,56 +1,20 @@
 location: .gitman
 sources:
-  - repo: https://github.com/OctoMap/octomap
-    name: octomap
-    rev: devel
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/octomap
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/OctoMap/octomap_rviz_plugins
-    name: octomap_rviz_plugins
-    rev: kinetic-devel
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/octomap_rviz_plugins
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/OctoMap/octomap_msgs
-    name: octomap_msgs
-    rev: melodic-devel
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/octomap_msgs
-    scripts:
-      - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/octomap_tools.git
-    name: octomap_tools
-    rev: master
+    name: mrs_octomap_tools
+    rev: 1.5
     type: git
     params:
     sparse_paths:
       -
     links:
       - source: ''
-        target: ros_packages/octomap_tools
+        target: ros_packages/mrs_octomap_tools
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
     name: mrs_octomap_server
-    rev: master
+    rev: 1.5
     type: git
     params:
     sparse_paths:
@@ -62,7 +26,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
     name: mrs_octomap_planner
-    rev: master
+    rev: 1.5
     type: git
     params:
     sparse_paths:
@@ -72,20 +36,8 @@ sources:
         target: ros_packages/mrs_octomap_planner
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/OctoMap/octomap_ros
-    name: octomap_ros
-    rev: melodic-devel
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/octomap_ros
-    scripts:
-      - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/subt_planning_lib.git
-    name: subt_planning_lib
+    name: mrs_subt_planning_lib
     rev: master
     type: git
     params:
@@ -93,106 +45,6 @@ sources:
       -
     links:
       - source: ''
-        target: ros_packages/subt_planning_lib
+        target: ros_packages/mrs_subt_planning_lib
     scripts:
       - git submodule update --init --recursive
-sources_locked:
-  - repo: https://github.com/ctu-mrs/octomap_tools.git
-    name: octomap_tools
-    rev: c70046fad98e0f3571227fcf9533b3aa4951ae68
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/octomap_tools
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
-    name: mrs_octomap_server
-    rev: 1a3cdc6a481c9cdc584513d77bfab6620bde03d3
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/mrs_octomap_server
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
-    name: mrs_octomap_planner
-    rev: 5032985dd461ad3fb83f85603064aba5d9256b0e
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/mrs_octomap_planner
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/OctoMap/octomap_ros
-    name: octomap_ros
-    rev: 8816e50bf00411c41b7891842effd41bfbc2e2df
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/octomap_ros
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/OctoMap/octomap_rviz_plugins
-    name: octomap_rviz_plugins
-    rev: 37b992585ed1cf7099c87c74f534253d3e7331e6
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/octomap_rviz_plugins
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/OctoMap/octomap_msgs
-    name: octomap_msgs
-    rev: dcaaf62bd071db0fcd806a98a9101a2e470f7f6d
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/octomap_msgs
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/OctoMap/octomap
-    name: octomap
-    rev: 8178b4f28c72a8c7b84ece25bda7a59df8d14eb8
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/octomap
-    scripts:
-      - git submodule update --init --recursive
-  - repo: https://github.com/ctu-mrs/subt_planning_lib.git
-    name: subt_planning_lib
-    rev: e6536099c279e73401106dc160e974122fd8d95a
-    type: git
-    params:
-    sparse_paths:
-      -
-    links:
-      - source: ''
-        target: ros_packages/subt_planning_lib
-    scripts:
-      - git submodule update --init --recursive
-default_group: ''
-groups:
-  -

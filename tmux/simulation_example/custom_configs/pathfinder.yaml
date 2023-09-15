@@ -1,6 +1,0 @@
-
-distance_transform:
-  submap_distance: 20.0 # [m] from the UAV into all directions
-
-safe_obstacle_distance: 1.4 # [m]
-euclidean_distance_cutoff: 1.4 # [m]

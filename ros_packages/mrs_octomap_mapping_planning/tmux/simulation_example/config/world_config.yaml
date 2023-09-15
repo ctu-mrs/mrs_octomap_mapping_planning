@@ -2,27 +2,27 @@
 ## DEFINITION OF THE ARENA
 #
 
-utm_origin_units: 0 # 0 - UTM, 1 - Latitude Longitude
-utm_origin_x: 465710.758973
-utm_origin_y: 5249465.43086
-utm_origin_lat: 47.397743
-utm_origin_lon: 8.545594
+world_origin_units: "LATLON" # {"UTM, "LATLON"}
 
-init_gps_origin_local: true # origin of gps_origin will be in the position of UAV at odometry launch
-init_gps_offset_x: 0.0 # initial position of UAV relative to gps_origin when init_gps_origin_local is enabled
-init_gps_offset_y: 0.0 # initial position of UAV relative to gps_origin when init_gps_origin_local is enabled
+world_origin_x: 47.397743
+world_origin_y: 8.545594
 
 safety_area:
 
   use_safety_area: false
 
-  frame_name: "slam_origin"
+  frame_name: "world_origin"
 
   # convex polygon CCW
-  safety_area: [-20, -20,
-  20, -20,
-  20, 20,
-  -20, 20]
+  safety_area: [
+    -50, -50,
+    50,  -50,
+    50,  50,
+    -50, 50
+  ]
+
+  max_z: 15.0
+  min_z: 0.5
 
   polygon_obstacles:
     # loaded as a vector of matrices
@@ -44,6 +44,3 @@ safety_area:
            -10.0, -10.0, 4, 2]
     rows: 1 # each matrix has a single row
     cols: [4, 4] # nums of cols of each matrix
-
-  max_height: 5.0
-  min_height: -1.0

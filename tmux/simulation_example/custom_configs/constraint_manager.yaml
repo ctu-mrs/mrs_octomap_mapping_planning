@@ -1,7 +1,0 @@
-constraint_management:
-
-  allowed_constraints:
-    GPS: ["slow", "medium", "fast"]
-
-  fallback_constraints:
-    GPS: "fast"
