@@ -12,6 +12,9 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <depend>cmake_modules</depend>
+  <depend>rospy</depend>
+
   <depend>mrs_octomap_server</depend>
   <depend>mrs_octomap_planner</depend>
   <depend>mrs_octomap_tools</depend>
