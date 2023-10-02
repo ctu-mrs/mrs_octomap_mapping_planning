@@ -3,7 +3,6 @@
   <!-- args corresponding to environment variables -->
   <arg name="UAV_NAME" default="$(env UAV_NAME)" />
   <arg name="LOGGER_DEBUG" default="$(optenv LOGGER_DEBUG false)" />
-  <arg name="RUN_TYPE" default="$(env RUN_TYPE)" />
 
     <!-- other args -->
   <arg name="standalone" default="false" />
@@ -46,7 +45,7 @@
 
     <arg name="standalone" value="$(arg standalone)" />
     <arg name="nodelet_manager_name" value="$(arg nodelet_manager_name)" />
-    <arg name="custom_config" value="$(arg config_octomap)" />
+    <arg name="custom_config" value="$(arg config_octomap_server)" />
     <arg name="debug" value="false" />
     <arg name="depth_camera_topic_0_in" value="$(arg depth_camera_topic_0_in)" />
     <arg name="depth_camera_topic_0_over_max_range_in" value="$(arg depth_camera_topic_0_over_max_range_in)" />
