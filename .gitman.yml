@@ -2,7 +2,7 @@ location: .gitman
 sources:
   - repo: https://github.com/ctu-mrs/octomap_tools.git
     name: mrs_octomap_tools
-    rev: 1.5
+    rev: master
     type: git
     params:
     sparse_paths:
@@ -14,7 +14,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
     name: mrs_octomap_server
-    rev: 1.5
+    rev: master
     type: git
     params:
     sparse_paths:
@@ -26,7 +26,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
     name: mrs_octomap_planner
-    rev: 1.5
+    rev: master
     type: git
     params:
     sparse_paths:
