@@ -2,4 +2,5 @@
 *.swo
 
 .gitman
+ros_packages/.gitman
 *.tmuxinator.yml
