@@ -9,7 +9,7 @@ sources:
       -
     links:
       - source: ''
-        target: ros_packages/mrs_octomap_tools
+        target: mrs_octomap_tools
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
@@ -21,7 +21,7 @@ sources:
       -
     links:
       - source: ''
-        target: ros_packages/mrs_octomap_server
+        target: mrs_octomap_server
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_planner.git
@@ -33,7 +33,7 @@ sources:
       -
     links:
       - source: ''
-        target: ros_packages/mrs_octomap_planner
+        target: mrs_octomap_planner
     scripts:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/subt_planning_lib.git
@@ -45,6 +45,6 @@ sources:
       -
     links:
       - source: ''
-        target: ros_packages/mrs_subt_planning_lib
+        target: mrs_subt_planning_lib
     scripts:
       - git submodule update --init --recursive
