@@ -24,8 +24,7 @@ windows:
   - spawn:
       layout: tiled
       panes:
-        # - waitForGazebo; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-ouster --ouster-model OS0-128 --use-gpu-ray --enable-realsense-front --enable-realsense-down --pos 0 0 1.0 0"
-        - waitForGazebo; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --enable-rangefinder --enable-ouster --ouster-model OS0-128 --use-gpu-ray --pos 0 0 1.0 0"
+        - waitForGazebo; rosservice call /mrs_drone_spawner/spawn "1 $UAV_TYPE --pos 0 0 1 0 --enable-rangefinder --enable-ouster model:=OS0-128 use_gpu:=True"
   - hw_api:
       layout: tiled
       panes:
