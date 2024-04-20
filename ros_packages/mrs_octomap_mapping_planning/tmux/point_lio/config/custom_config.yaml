@@ -1,0 +1,271 @@
+mrs_uav_managers:
+
+  uav_manager:
+    takeoff:
+      after_takeoff:
+        controller: "Se3Controller"
+
+  estimation_manager:
+
+    state_estimators: [
+     "gps_garmin",
+     "rtk",
+     "point_lio"
+    ]
+
+    initial_state_estimator: "point_lio" # will be used as the first state estimator
+    agl_height_estimator: "" # only slightly filtered height for checking min height (not used in control feedback)
+
+    # namespace of the state estimator
+    point_lio:
+
+      address: "point_lio/PointLioEstimatorPlugin"
+
+      requires: # data required from the hw api
+        gnss: false
+        imu: false
+        distance_sensor: false
+        altitude: false
+        magnetometer_heading: false
+        position: false
+        orientation: true
+        velocity: false
+        angular_velocity: true
+
+      override_frame_id: # override the default frame_id with a custom one (e.g. slam_origin instead of point_lio_origin)
+        enabled: true
+        frame_id: "slam_origin" # the desired frame_id without the UAV namespace
+
+      estimators: # the names of the partial estimators
+        lateral:
+          name: "lat_point_lio"
+        altitude:
+          name: "alt_point_lio"
+        heading:
+          name: "hdg_point_lio"
+          passthrough: false # if true, then heading is not estimated but passed through from the orientation topic
+
+      topics:
+        orientation: "hw_api/orientation" # orientation passthrough
+        angular_velocity: "hw_api/angular_velocity" # angular velocity passthrough
+
+      # namespace of the altitude estimator
+      alt_point_lio: 
+
+        max_flight_z: 100.0 # [m] maximum allowed flight Z (in the estimator frame)
+ 
+        innovation:
+          limit: 1.0 # [m] innovation limit that will trigger action
+          action: "switch" # {"eland", "switch", "mitigate"}
+  
+        repredictor: # repredictor for correct fusion of delayed measurements
+          enabled: true
+          buffer_size: 200 # [samples] how many states and corrections are kept in history (i.e. estimator running at the default 100 Hz rate will be able to fuse corrections with up to 2 s delay with buffer size of 200 samples)
+  
+        process_noise: # process noise covariance (Q)
+          pos: 1.0 # position state
+          vel: 100.0 # velocity state
+          acc: 100.0 # acceleration state
+  
+        corrections: [
+          "pos_point_lio",
+          "vel_hw_api"
+        ]
+  
+        pos_point_lio:
+          state_id: 0 # 0 - position, 1 - velocity, 2 - acceleration
+          noise: 0.01 # measurement noise covariance (R)
+          noise_unhealthy_coeff: 100.0 # covariance gets multiplied by this coefficient when correction is unhealthy (R)
+          message:
+            type: "nav_msgs/Odometry"
+            topic: "aft_mapped_to_init" # without uav namespace
+            limit: 
+              delay: 2.0 # [s] messages with higher delay will flag correction as unhealthy
+              time_since_last: 1.0 # [s] larger time step between messages will flag correction as unhealthy
+  
+          processors: [] # types of processors attached to this measurement
+
+        vel_hw_api:
+          state_id: 1 # 0 - position, 1 - velocity, 2 - acceleration
+          noise: 1.0 # measurement noise covariance (R)
+          noise_unhealthy_coeff: 100.0 # covariance gets multiplied by this coefficient when correction is unhealthy (R)
+          message:
+            type: "geometry_msgs/Vector3Stamped"
+            topic: "hw_api/velocity" # without uav namespace
+            limit: 
+              delay: 1.0 # [s] messages with higher delay will flag correction as unhealthy
+              time_since_last: 0.5 # [s] larger time step between messages will flag correction as unhealthy
+
+          processors: [] # types of processors attached to this measurement
+
+          median_filter:
+            buffer_size: 20 # the number of samples from which the median is calculated
+            max_diff: 2.0 # [m] reject measurement if difference from median is over this value
+
+      # namespace of the heading estimator
+      hdg_point_lio: 
+
+        max_flight_z: 100.0 # [m] maximum allowed flight Z (in the estimator frame)
+
+        position_innovation_limit: 1.0 # [m] innovation limit that will trigger switch to other estimator
+
+        repredictor: # repredictor for correct fusion of delayed measurements
+          enabled: true
+          buffer_size: 200 # [samples] how many states and corrections are kept in history (i.e. estimator running at the default 100 Hz rate will be able to fuse corrections with up to 2 s delay with buffer size of 200 samples)
+
+        process_noise: # process noise covariance (Q)
+          pos: 0.1 # position state
+          vel: 0.1 # velocity state
+
+        corrections: [
+          "hdg_point_lio"
+        ]
+
+        hdg_point_lio:
+          state_id: 0 # 0 - position, 1 - velocity, 2 - acceleration
+          noise: 0.0001 # measurement noise covariance (R)
+          noise_unhealthy_coeff: 100.0 # covariance gets multiplied by this coefficient when correction is unhealthy (R)
+          message:
+            type: "nav_msgs/Odometry"
+            topic: "aft_mapped_to_init" # without uav namespace
+            limit: 
+              delay: 2.0 # [s] messages with higher delay will flag correction as unhealthy
+              time_since_last: 1.0 # [s] larger time step between messages will flag correction as unhealthy
+
+          processors: [] # types of processors attached to this measurement
+
+      # namespace of the lateral estimator
+      lat_point_lio: 
+
+        hdg_source_topic: "point_lio/hdg_point_lio/output" # [mrs_uav_state_estimation/EstimatorOutput]
+
+        innovation:
+          limit: 1.0 # [m] innovation limit that will trigger action
+          action: "switch" # {"eland", "switch", "mitigate"}
+
+        max_flight_z: 100.0 # [m] maximum allowed flight Z (in the estimator frame)
+
+        repredictor: # repredictor for correct fusion of delayed measurements
+          enabled: true
+          buffer_size: 200 # [samples] how many states and corrections are kept in history (i.e. estimator running at the default 100 Hz rate will be able to fuse corrections with up to 2 s delay with buffer size of 200 samples)
+
+        process_noise: # process noise covariance (Q)
+          pos: 1.0 # position state
+          vel: 10.0 # velocity state
+          acc: 0.1 # acceleration state
+
+        corrections: [
+          "pos_point_lio",
+        ]
+
+        pos_point_lio:
+          state_id: 0 # 0 - position, 1 - velocity, 2 - acceleration
+          noise: 0.01 # measurement noise covariance (R)
+          noise_unhealthy_coeff: 100.0 # covariance gets multiplied by this coefficient when correction is unhealthy (R)
+          message:
+            type: "nav_msgs/Odometry"
+            topic: "aft_mapped_to_init" # without uav namespace
+            limit: 
+              delay: 2.0 # [s] messages with higher delay will flag correction as unhealthy
+              time_since_last: 1.0 # [s] larger time step between messages will flag correction as unhealthy
+
+          processors: [] # types of processors attached to this measurement
+
+  constraint_manager:
+
+    estimator_types: [
+      "gps_garmin",
+      "point_lio"
+    ]
+
+    constraints: [
+      "slow",
+      "medium",
+      "fast",
+    ]
+
+    # list of allowed gains per odometry mode
+    allowed_constraints:
+      point_lio: ["slow", "medium", "fast"]
+      gps_garmin: ["slow", "medium", "fast"]
+
+    # those gains will be used automatically when a localization mode switches
+    # and the current gains are not in the allowed list (next paragraphs)
+    default_constraints:
+      point_lio: "slow"
+      gps_garmin: "slow"
+
+  gain_manager:
+
+    estimator_types: [
+      "point_lio",
+      "gps_garmin"
+    ]
+
+    gains: [
+      "supersoft",
+    ]
+
+    # list of allowed gains per odometry mode
+    allowed_gains:
+      point_lio: ["supersoft"]
+      gps_garmin: ["supersoft"]
+
+    # those gains will be used automatically when a localization mode switches
+    # and the current gains are not in the allowed list (next paragraphs)
+    default_gains:
+      point_lio: "supersoft"
+      gps_garmin: "supersoft"
+
+  transform_manager:
+
+    tf_sources: [point_lio_raw]
+    
+    point_lio:
+      odom_topic: "odom" # name of the topic (expects nav_msgs/Odometry topic type)
+      tf_from_attitude: # used for transforming velocities before full transform is available
+        enabled: true
+        attitude_topic: "attitude" # name of the attitude topic(expects geometry_msgs/QuaternionStamped topic type)
+      namespace: "estimation_manager/point_lio" # the namespace of the topic (usually the node that publishes the topic)
+      utm_based: false # if true, will publish tf to utm_origin
+      inverted: true # publish as inverted tf (the default for inverted mrs tf tree convention)
+      republish_in_frames: [] # the odometry message will be transformed and republished in the specified frames
+
+    mapping_origin_tf:
+      enabled: true
+      debug_prints: false
+      lateral_topic: "slam/odom" # name of the topic used for x, y components of the tf (expects nav_msgs/Odometry topic type)
+      altitude_topic: "slam/odom" # name of the topic  used for z components of the tf (expects nav_msgs/Odometry topic type)
+      orientation_topic: "hw_api/orientation" # name of the topic  used for orientation components of the tf (expects geometry_msgs/Quaternion topic type)
+      inverted: true # publish as inverted tf (the default for inverted mrs tf tree convention)
+      custom_frame_id:
+        enabled: true
+        frame_id: "mapping_origin"
+
+    point_lio_raw:
+      odom_topic: "odom" # name of the topic (expects nav_msgs/Odometry topic type)
+      tf_from_attitude: # used for transforming velocities before full transform is available
+        enabled: false
+        attitude_topic: "attitude" # name of the attitude topic(expects geometry_msgs/QuaternionStamped topic type)
+      namespace: "point_lio" # the namespace of the topic (usually the node that publishes the topic)
+      utm_based: false # if true, will publish tf to utm_origin
+      inverted: true # publish as inverted tf (the default for inverted mrs tf tree convention)
+      republish_in_frames: [] # the odometry message will be transformed and republished in the specified frames
+
+mrs_uav_trajectory_generation:
+
+  # execution time limiter
+  max_time: 0.5 # [s]
+
+  # check and fix the max deviation between the input path and the output trajectory
+  # by subsampling the original path with more waypoints
+  check_trajectory_deviation:
+    max_deviation: 0.20 # [m]
+
+  # allows to neglect waypoints in the original path if the new path
+  # does not violate max distance from the original path.
+  # This makes for similar but sparser paths, which are easier for the
+  # trajectory generator to work with.
+  path_straightener:
+    enabled: true
+    max_deviation: 0.20 # [m]
