@@ -45,13 +45,13 @@ input=(
 '
   'Status' 'waitForHw; roslaunch mrs_uav_status status.launch
 '
-  'Core' 'waitForTime; roslaunch mrs_uav_core core.launch platform_config:=`rospack find mrs_uav_deployment`/config/mrs_uav_system/$UAV_TYPE.yaml world_config:=`rospack find mrs_uav_deployment`/config/worlds/world_$WORLD_NAME.yaml custom_config:=.config/custom_config.yaml network_config:=./config/network_config.yaml
+  'Core' 'waitForTime; roslaunch mrs_uav_core core.launch platform_config:=`rospack find mrs_uav_deployment`/config/mrs_uav_system/$UAV_TYPE.yaml world_config:=`rospack find mrs_uav_deployment`/config/worlds/world_$WORLD_NAME.yaml custom_config:=./config/custom_config.yaml network_config:=./config/network_config.yaml
 '
   'AutoStart' 'waitForHw; roslaunch mrs_uav_autostart automatic_start.launch
 '
   'SLAM' 'waitForRos; roslaunch point_lio mapping_mid360.launch
 '
-  'Octomap' 'waitForRos; roslaunch mrs_octomap_mapping_planning mapplan.launch world_frame_id:=$UAV_NAME/livox_frame config_octomap_server:=./config/octomap_server.yaml config_octomap_planner:=./config/octomap_planner.yaml config_pcl_filter_ouster:=./config/ouster_filter_mapping.yaml config_pcl_filter_rs_front:=./config/rs_front_filter.yaml config_pcl_filter_rs_down:=./config/rs_down_filter.yaml
+  'Octomap' 'waitForRos; roslaunch mrs_octomap_mapping_planning mapplan.launch world_frame_id:=$UAV_NAME/point_lio_init config_octomap_server:=./config/octomap_server.yaml config_octomap_planner:=./config/octomap_planner.yaml config_pcl_filter_ouster:=./config/ouster_filter_mapping.yaml config_pcl_filter_rs_front:=./config/rs_front_filter.yaml config_pcl_filter_rs_down:=./config/rs_down_filter.yaml
 '
 # do NOT modify the command list below
   'EstimDiag' 'waitForHw; rostopic echo /'"$UAV_NAME"'/estimation_manager/diagnostics
