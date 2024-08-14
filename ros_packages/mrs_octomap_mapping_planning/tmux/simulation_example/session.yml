@@ -40,10 +40,10 @@ windows:
   - mapplan:
       layout: tiled
       panes:
-        - waitForHw; roslaunch mrs_octomap_mapping_planning mapplan.launch
+        - waitForHw; roslaunch mrs_octomap_mapping_planning mapplan.launch lidar:=ouster
           config_octomap_server:=./config/octomap_server.yaml
           config_octomap_planner:=./config/octomap_planner.yaml
-          config_pcl_filter_ouster:=./config/ouster_filter_mapping.yaml
+          config_pcl_filter_lidar:=./config/ouster_filter_mapping.yaml
           config_pcl_filter_rs_front:=./config/rs_front_filter.yaml
           config_pcl_filter_rs_down:=./config/rs_down_filter.yaml
   - takeoff:
