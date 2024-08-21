@@ -43,6 +43,8 @@ input=(
 '
   'Livox' 'waitForRos; roslaunch livox_ros_driver2 mid360.launch xfer_format:=1 # set to 0 if you dont need Point-LIO (will produce sensor_msgs/PointCloud2 format)
 '
+  'LivoxTf' 'waitForRos; rosrun tf2_ros static_transform_publisher 0.12 0.0 -0.11 0.0 2.356 0.0 '"$UAV_NAME"'/fcu '"$UAV_NAME"'/livox
+'
   'Point-LIO' 'waitForRos; roslaunch point_lio mid360.launch rviz:=false
 '
   'Octomap' 'waitForRos; roslaunch mrs_octomap_mapping_planning mapplan.launch lidar:=livox_mid360 config_octomap_server:=./config/octomap_server.yaml config_octomap_planner:=./config/octomap_planner.yaml config_pcl_filter_lidar:=./config/livox_filter_mapping.yaml world_frame_id:='"$UAV_NAME"'/point_lio_origin
@@ -51,7 +53,8 @@ input=(
 '
   'Status' 'waitForHw; roslaunch mrs_uav_status status.launch
 '
-  'Core' 'waitForTime; roslaunch mrs_uav_core core.launch platform_config:=`rospack find mrs_uav_deployment`/config/mrs_uav_system/$UAV_TYPE.yaml world_config:=./config/world_config.yaml custom_config:=./config/custom_config.yaml network_config:=./config/network_config.yaml
+  # 'Core' 'waitForTime; roslaunch mrs_uav_core core.launch platform_config:=`rospack find mrs_uav_deployment`/config/mrs_uav_system/$UAV_TYPE.yaml world_config:=./config/world_config.yaml custom_config:=./config/custom_config.yaml network_config:=./config/network_config.yaml
+  'Core' 'waitForTime; roslaunch mrs_uav_core core.launch platform_config:=`rospack find mrs_uav_deployment`/config/mrs_uav_system/$UAV_TYPE.yaml custom_config:=./config/custom_config.yaml network_config:=./config/network_config.yaml world_config:=`rospack find mrs_uav_deployment`/config/worlds/world_$WORLD_NAME.yaml 
 '
   'AutoStart' 'waitForHw; roslaunch mrs_uav_autostart automatic_start.launch
 '

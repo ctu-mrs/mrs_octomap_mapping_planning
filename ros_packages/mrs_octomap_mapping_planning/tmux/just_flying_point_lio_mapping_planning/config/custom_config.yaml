@@ -9,11 +9,12 @@ mrs_uav_managers:
 
     state_estimators: [
      "gps_garmin",
+     # "gps_baro",
      #"rtk",
      "point_lio"
     ]
 
-    initial_state_estimator: "point_lio" # will be used as the first state estimator
+    initial_state_estimator: "gps_garmin" # will be used as the first state estimator
     agl_height_estimator: "" # only slightly filtered height for checking min height (not used in control feedback)
 
     # namespace of the state estimator
