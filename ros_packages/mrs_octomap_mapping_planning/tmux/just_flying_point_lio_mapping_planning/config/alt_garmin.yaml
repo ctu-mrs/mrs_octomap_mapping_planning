@@ -1,0 +1,65 @@
+mrs_uav_managers:
+  estimation_manager:
+    gps_garmin: # namespace of the state estimator
+      alt_garmin: # namespace of the altitude estimator
+
+        max_flight_z: 10.0 # [m] maximum allowed flight Z (in the estimator frame)
+
+        innovation:
+          limit: 1.0 # [m] innovation limit that will trigger action
+          action: "mitigate" # {"eland", "switch", "mitigate"}
+
+        repredictor: # repredictor for correct fusion of delayed measurements
+          enabled: false
+
+        process_noise: # process noise covariance (Q)
+          pos: 1.0 # position state
+          vel: 1.0 # velocity state
+          acc: 1.0 # acceleration state
+
+        corrections: [
+          "pos_garmin",
+          "vel_hw_api"
+        ]
+
+        pos_garmin:
+          state_id: 0 # 0 - position, 1 - velocity, 2 - acceleration
+          noise: 0.1 # measurement noise covariance (R)
+          noise_unhealthy_coeff: 100.0 # covariance gets multiplied by this coefficient when correction is unhealthy (R)
+          message:
+            type: "sensor_msgs/Range"
+            topic: "hw_api/distance_sensor" # without uav namespace
+            limit: 
+              delay: 0.5 # [s] messages with higher delay will flag correction as unhealthy
+              time_since_last: 0.5 # [s] larger time step between messages will flag correction as unhealthy
+
+          processors: ["excessive_tilt", "median_filter", "saturate"] # types of processors attached to this measurement (the processors are called in exactly this order)
+          
+          median_filter:
+            buffer_size: 100 # [samples] number of historic values from which the median is calculated
+            max_diff: 2.0 # [m] difference of input value from median to be considered valid
+
+          saturate:
+            start_enabled: true # saturate processor can start as disabled and then be enabled by a service or a trigger condition
+            keep_enabled: true # keep enabled even after the corrections are near the value of state
+            min: -0.1
+            max: 0.1
+            limit: 2.0
+
+          excessive_tilt:
+            orientation_topic: "hw_api/orientation"
+            max_tilt: 30.0 # [deg]
+
+      # Parameters of altitude median filters - buffer_size , max_diff 
+        vel_hw_api:
+          state_id: 1 # 0 - position, 1 - velocity, 2 - acceleration
+          noise: 0.01 # measurement noise covariance (R)
+          noise_unhealthy_coeff: 100.0 # covariance gets multiplied by this coefficient when correction is unhealthy (R)
+          message:
+            type: "geometry_msgs/Vector3Stamped"
+            topic: "hw_api/velocity" # without uav namespace
+            limit: 
+              delay: 1.0 # [s] messages with higher delay will flag correction as unhealthy
+              time_since_last: 0.5 # [s] larger time step between messages will flag correction as unhealthy
+
+          processors: [] # types of processors attached to this measurement
