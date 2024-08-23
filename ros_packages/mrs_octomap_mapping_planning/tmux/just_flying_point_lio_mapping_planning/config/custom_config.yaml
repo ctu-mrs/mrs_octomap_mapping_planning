@@ -11,10 +11,10 @@ mrs_uav_managers:
      "gps_garmin",
      "gps_baro",
      "rtk",
-     # "point_lio"
+     "point_lio"
     ]
 
-    initial_state_estimator: "rtk" # will be used as the first state estimator
+    initial_state_estimator: "point_lio" # will be used as the first state estimator
     agl_height_estimator: "" # only slightly filtered height for checking min height (not used in control feedback)
 
     # namespace of the state estimator
@@ -75,7 +75,7 @@ mrs_uav_managers:
   
         pos_point_lio:
           state_id: 0 # 0 - position, 1 - velocity, 2 - acceleration
-          noise: 0.01 # measurement noise covariance (R)
+          noise: 0.001 # measurement noise covariance (R)
           noise_unhealthy_coeff: 100.0 # covariance gets multiplied by this coefficient when correction is unhealthy (R)
           message:
             type: "nav_msgs/Odometry"
