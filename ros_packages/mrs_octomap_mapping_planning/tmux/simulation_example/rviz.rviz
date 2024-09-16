@@ -406,7 +406,7 @@ Visualization Manager:
               Marker Topic: /uav1/control_manager/trajectory_original/markers
               Name: Markers
               Namespaces:
-                {}
+                "": true
               Queue Size: 100
               Value: true
           Enabled: true
@@ -530,7 +530,7 @@ Visualization Manager:
               Marker Topic: /uav1/control_manager/mpc_tracker/trajectory_processed/markers
               Name: Markers
               Namespaces:
-                {}
+                "": true
               Queue Size: 100
               Value: true
           Enabled: true
@@ -544,7 +544,9 @@ Visualization Manager:
           Marker Topic: /uav1/trajectory_generation/markers/final
           Name: final
           Namespaces:
-            {}
+            markers/final_lines: true
+            markers/final_points: true
+            markers/final_triangles: true
           Queue Size: 100
           Value: true
         - Class: rviz/MarkerArray
@@ -552,7 +554,9 @@ Visualization Manager:
           Marker Topic: /uav1/trajectory_generation/markers/original
           Name: original
           Namespaces:
-            {}
+            markers/original_lines: true
+            markers/original_points: true
+            markers/original_triangles: true
           Queue Size: 100
           Value: true
       Enabled: true
@@ -560,21 +564,21 @@ Visualization Manager:
     - Class: rviz/Group
       Displays:
         - Class: rviz/MarkerArray
-          Enabled: true
+          Enabled: false
           Marker Topic: /uav1/octomap_global_vis/occupied_cells_vis_array_throttled
           Name: OccupiedGlobalThrottled
           Namespaces:
-            map: true
+            {}
           Queue Size: 100
-          Value: true
+          Value: false
         - Class: rviz/MarkerArray
-          Enabled: true
+          Enabled: false
           Marker Topic: /uav1/octomap_local_vis/occupied_cells_vis_array
           Name: OccupiedLocal
           Namespaces:
-            map: true
+            {}
           Queue Size: 100
-          Value: true
+          Value: false
         - Class: rviz/MarkerArray
           Enabled: false
           Marker Topic: /uav1/octomap_local_vis/free_cells_vis_array
@@ -583,6 +587,14 @@ Visualization Manager:
             {}
           Queue Size: 100
           Value: false
+        - Class: rviz/MarkerArray
+          Enabled: true
+          Marker Topic: /uav1/octomap_local_large_vis/occupied_cells_vis_array
+          Name: OccupiedLocalLarge
+          Namespaces:
+            map: true
+          Queue Size: 100
+          Value: true
       Enabled: true
       Name: Octomap
   Enabled: true
@@ -613,7 +625,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 2.069735527038574
+      Distance: 11.459510803222656
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -629,9 +641,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.43979713320732117
+      Pitch: 0.7847968935966492
       Target Frame: uav1/fcu
-      Yaw: 2.9422268867492676
+      Yaw: 3.0122275352478027
     Saved: ~
 Window Geometry:
   Displays:
