@@ -30,7 +30,7 @@ The [launch file](./ros_packages/octomap_mapping_planning/launch/mapplan.launch)
 ```
 ./ros_packages/octomap_mapping_planning/launch/mapplan.launch
 ```
-was prepared to launch
+is prepared to launch
 
 * PointCloud filter ([mrs_pcl_tools](https://github.com/ctu-mrs/mrs_pcl_tools)),
 * Octomap Server,
