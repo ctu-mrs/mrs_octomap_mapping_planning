@@ -14,7 +14,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/mrs_octomap_server.git
     name: mrs_octomap_server
-    rev: devel
+    rev: master
     type: git
     sparse_paths:
       -
