@@ -38,7 +38,7 @@ sources:
       - git submodule update --init --recursive
   - repo: https://github.com/ctu-mrs/subt_planning_lib.git
     name: mrs_subt_planning_lib
-    rev: master
+    rev: ros2
     type: git
     sparse_paths:
       -
