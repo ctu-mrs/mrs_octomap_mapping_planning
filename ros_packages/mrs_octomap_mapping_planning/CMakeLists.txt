@@ -1,19 +1,31 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.8)
 project(mrs_octomap_mapping_planning)
 
-find_package(catkin REQUIRED)
+find_package(ament_cmake REQUIRED)
 
-catkin_package()
+install(
+  DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
 
-## --------------------------------------------------------------
-## |                           Install                          |
-## --------------------------------------------------------------
+ament_export_dependencies(
+  ${DEPENDENCIES}
+)
 
-install(DIRECTORY launch
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
-  )
+install(
+  DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
 
-install(DIRECTORY tmux/
+# install(
+#   DIRECTORY config
+#   DESTINATION share/${PROJECT_NAME}
+# )
+
+install(
+  DIRECTORY tmux
   USE_SOURCE_PERMISSIONS
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/tmux
-  )
+  DESTINATION share/${PROJECT_NAME}
+)
+
+ament_package()
