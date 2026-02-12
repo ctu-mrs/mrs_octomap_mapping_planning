@@ -256,7 +256,7 @@ def generate_launch_description():
             {'thread_num': os.cpu_count()},
             {'use_sim_time': use_sim_time},
         ],
-        # prefix=[debug],
+        # prefix=['debug_roslaunch ' + os.ttyname(sys.stdout.fileno())],
         # prefix="valgrind --tool=memcheck --leak-check=no --track-origins=no --show-reachable=no --errors-for-leak-kinds=definite --num-callers=12",
         condition=UnlessCondition(standalone)
     )

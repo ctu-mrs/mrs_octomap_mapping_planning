@@ -53,8 +53,8 @@ mrs_octomap_planner:
       rate: 10.0 # [Hz]
 
     safe_obstacle_distance:
-      default: 1.0 # [m]
-      min: 0.8 # [m]
+      default: 1.5 # [m]
+      min: 1.0 # [m]
       max: 5.0 # [m]
 
     subt_planner:
