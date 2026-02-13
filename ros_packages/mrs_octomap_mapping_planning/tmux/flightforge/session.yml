@@ -12,7 +12,6 @@ pre_window:
   - export UAV_TYPE="x500"
   - export RMW_IMPLEMENTATION=rmw_zenoh_cpp
   - export PLATFORM_CONFIG=`ros2 pkg prefix mrs_multirotor_simulator`/share/mrs_multirotor_simulator/config/mrs_uav_system/$UAV_TYPE.yaml
-  - export WORLD_FILE=`ros2 pkg prefix mrs_gazebo_common_resources`/share/mrs_gazebo_common_resources/worlds/pine_forest.sdf
 windows:
   - router:
       layout: tiled

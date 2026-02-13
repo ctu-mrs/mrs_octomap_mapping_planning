@@ -5,7 +5,7 @@ socket_name: mrs
 attach: false
 tmux_options: -f /etc/ctu-mrs/tmux.conf
 # you can modify these
-startup_window: planning
+startup_window: map_plan
 pre_window:
   - export UAV_NAME=uav1
   - export USE_SIM_TIME="true"
@@ -18,11 +18,6 @@ windows:
       layout: tiled
       panes:
         - ros2 run rmw_zenoh_cpp rmw_zenohd
-  # - flightforge:
-  #     layout: tiled
-  #     panes:
-  #       - ros2 launch mrs_uav_flightforge_simulator flightforge_simulator.launch.py custom_config:=./config/simulator.yaml
-  #       - ros2 launch mrs_uav_flightforge_simulator hw_api.launch.py
   - gazebo:
       layout: tiled
       panes:
@@ -35,7 +30,7 @@ windows:
       panes:
         - ros2 launch mrs_uav_core core.launch.py
           platform_config:=$PLATFORM_CONFIG
-          world_config:=./config/world_config_gazebo.yaml
+          world_config:=./config/world_config.yaml
           custom_config:=./config/custom_config.yaml
           network_config:=./config/network_config.yaml
   - status:
